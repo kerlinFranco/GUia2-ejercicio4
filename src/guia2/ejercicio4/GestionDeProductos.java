@@ -77,6 +77,11 @@ public class GestionDeProductos extends javax.swing.JInternalFrame {
         jbSalir.setText("Salir");
 
         jbBuscar.setText("Buscar");
+        jbBuscar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jbBuscarActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -176,6 +181,23 @@ public class GestionDeProductos extends javax.swing.JInternalFrame {
         Producto prod=new Producto(codigo, desc, precio, stock, cate);
         SuperDeTodoSA.listaProductos.add(prod);
     }//GEN-LAST:event_jbGuardarActionPerformed
+
+    private void jbBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbBuscarActionPerformed
+       //Recorre la lista para encontrar productos con el codigo ingresado en 
+       //el texField de Codigo
+        int BuscarCodigo=Integer.parseInt(jtCodigo.getText());
+         for (Producto prod : SuperDeTodoSA.listaProductos) {
+            
+            if (prod.getCodigo()==BuscarCodigo){
+                jcRubro.setSelectedItem(prod.getRubro());
+                jtDesc.setText(prod.getDescripcion());
+                jtPrecio.setText(prod.getPrecio()+"");
+                jtStock.setText(prod.getStock()+"");
+                       
+                
+            }
+        }
+    }//GEN-LAST:event_jbBuscarActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
